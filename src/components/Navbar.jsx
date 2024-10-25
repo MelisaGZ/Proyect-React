@@ -1,63 +1,46 @@
+
 import React from 'react';
-import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 
-const NavBar = ({ title }) => {
-    return (
-        <nav style={navStyle}>
-            <div style={titleStyle}>{title}</div>
-
-
-            <ul style={ulStyle}>
-                <li><a href=".." style={linkStyle}>Nosotros</a></li>
-                <li><a href=".." style={linkStyle}>Artistica</a></li>
-                <li><a href=".." style={linkStyle}>Libreria</a></li>
-                <li><a href=".." style={linkStyle}>Contacto</a></li>
-            </ul>
-
-      {/* Widget del carrito de compras */}
-        <CartWidget cantidad={3} />
+const Navbar = () => {
+  return (
+    <nav style={styles.navbar}>
+        <p style={styles.p}>Libreria Papiro</p>
+        <ul style={styles.navList}>
+        <li><Link style={styles.liNav} to="/">Inicio</Link></li>
+        <li><Link style={styles.liNav} to="/category/escuela">Escolar</Link></li>
+        <li><Link style={styles.liNav} to="/category/artistica">Artistico</Link></li>
+        <li ><Link style={styles.liNav} to="/category/mochilas">Mochilas</Link></li>
+      </ul>
     </nav>
-    );
+  );
 };
 
-// Estilos en línea
-const navStyle = {
+const styles = {
+  navbar: {
+    height: '150px',
+    background:  'linear-gradient(to right, #0f2027, #203a43, #2c5364)', 
     display: 'flex',
+    padding: '10px',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '20px',
-    background: 'linear-gradient(to bottom, #244269, #8c99bb)',
-    borderBottom: '5px solid #ddd',
-    width: '100%',
-    boxSizing: 'border-box',
-    position: 'fixed',
-    top: 0,
-    zIndex: 1000,
-};
-
-
-const titleStyle = {
-    fontSize: '50px',
-    fontWeight: 'bold',
-    color: 'white',
-    fontFamily: 'Arial',
-};
-
-const ulStyle = {
+  },
+    navList: {
     display: 'flex',
     listStyle: 'none',
-    gap: '30px',
-    };
-
-const linkStyle = {
-    color: '#011307',
-    textDecoration: 'none',
+    gap: '20px',
+    justifyContent: 'space-between',
+  },
+  liNav: {
+    color: 'white',
     fontSize: '20px',
+    textDecoration: 'none',
+  },
+  p: {
+    margin: '10px',
+    fontSize: '30px',
+    color: 'white',
+  }
 
 };
 
-
-
-
-
-export default NavBar;
+export default Navbar;
